@@ -53,6 +53,8 @@ type Config struct {
 	OAuthClientSecret string     `json:"oauth_client_secret,omitempty"`
 	OAuthScopes       []string   `json:"oauth_scopes,omitempty"`
 	OAuthRedirectUri  string     `json:"oauth_redirect_uri,omitempty"`
+	OAuthUser         string     `json:"oauth_user,omitempty"`
+	OAuthPassword     string     `json:"oauth_password,omitempty"`
 
 	caPool *x509.CertPool
 }
@@ -157,6 +159,8 @@ func (c *Config) TokenSource(ctx context.Context) (result auth.TokenSource, err 
 			SetClientSecret(c.OAuthClientSecret).
 			SetScopes(c.OAuthScopes...).
 			SetRedirectUri(c.OAuthRedirectUri).
+			SetUsername(c.OAuthUser).
+			SetPassword(c.OAuthPassword).
 			SetInsecure(c.Insecure).
 			SetCaPool(c.caPool).
 			SetStore(tokenStore).
