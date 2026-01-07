@@ -109,8 +109,8 @@ func Cmd() *cobra.Command {
 		"oauth-flow",
 		string(oauth.DeviceFlow),
 		fmt.Sprintf(
-			"OAuth flow to use. Must be '%s', '%s' or '%s'.",
-			oauth.CodeFlow, oauth.DeviceFlow, oauth.CredentialsFlow,
+			"OAuth flow to use. Must be '%s', '%s', '%s' or '%s'.",
+			oauth.CodeFlow, oauth.DeviceFlow, oauth.CredentialsFlow, oauth.PasswordFlow,
 		),
 	)
 	flags.StringVar(
@@ -144,6 +144,24 @@ func Cmd() *cobra.Command {
 			defaultRedirectUri,
 		),
 	)
+	flags.StringVar(
+		&runner.args.oauthUser,
+		"oauth-user",
+		"",
+		fmt.Sprintf(
+			"OAuth user name. This is required for the '%s' flow.",
+			oauth.PasswordFlow,
+		),
+	)
+	flags.StringVar(
+		&runner.args.oauthPassword,
+		"oauth-password",
+		"",
+		fmt.Sprintf(
+			"OAuth password. This is required for the '%s' flow.",
+			oauth.PasswordFlow,
+		),
+	)
 	flags.MarkHidden("address")
 	flags.MarkHidden("private")
 	flags.MarkHidden("token")
@@ -173,6 +191,8 @@ type runnerContext struct {
 		oauthClientSecret string
 		oauthScopes       []string
 		oauthRedirectUri  string
+		oauthUser         string
+		oauthPassword     string
 	}
 }
 
@@ -331,6 +351,8 @@ func (c *runnerContext) run(cmd *cobra.Command, args []string) error {
 		cfg.OAuthClientSecret = c.args.oauthClientSecret
 		cfg.OAuthScopes = c.args.oauthScopes
 		cfg.OAuthRedirectUri = c.args.oauthRedirectUri
+		cfg.OAuthUser = c.args.oauthUser
+		cfg.OAuthPassword = c.args.oauthPassword
 	}
 
 	// Replace the gRPC anonymous connection with the authenticated one:
@@ -460,6 +482,8 @@ func (c *runnerContext) createTokenSource(ctx context.Context, tokenIssuer strin
 			SetClientSecret(c.args.oauthClientSecret).
 			SetScopes(c.args.oauthScopes...).
 			SetRedirectUri(c.args.oauthRedirectUri).
+			SetUsername(c.args.oauthUser).
+			SetPassword(c.args.oauthPassword).
 			Build()
 		if err != nil {
 			err = fmt.Errorf("failed to create OAuth token source: %w", err)
@@ -482,10 +506,13 @@ func (l *oauthFlowListener) Start(ctx context.Context, event oauth.FlowStartEven
 		return l.startCodeFlow(ctx, event)
 	case oauth.DeviceFlow:
 		return l.startDeviceFlow(ctx, event)
+	case oauth.CredentialsFlow, oauth.PasswordFlow:
+		// These flows don't require user interaction, so there is nothing to do here.
+		return nil
 	default:
 		return fmt.Errorf(
-			"unsupported flow '%s', must be '%s' or '%s'",
-			event.Flow, oauth.CodeFlow, oauth.DeviceFlow,
+			"unsupported flow '%s', must be '%s', '%s', '%s' or '%s'",
+			event.Flow, oauth.CodeFlow, oauth.DeviceFlow, oauth.CredentialsFlow, oauth.PasswordFlow,
 		)
 	}
 }
