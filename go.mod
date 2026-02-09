@@ -8,7 +8,7 @@ require (
 	github.com/gertd/go-pluralize v0.2.1
 	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/google/cel-go v0.26.1
-	github.com/innabox/fulfillment-common v0.0.34
+	github.com/innabox/fulfillment-common v0.0.36
 	github.com/mattn/go-colorable v0.1.14
 	github.com/mattn/go-isatty v0.0.20
 	github.com/neilotoole/jsoncolor v0.7.1
