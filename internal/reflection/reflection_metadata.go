@@ -18,4 +18,6 @@ type Metadata interface {
 	GetName() string
 	GetLabels() map[string]string
 	SetLabels(map[string]string)
+	GetAnnotations() map[string]string
+	SetAnnotations(map[string]string)
 }
