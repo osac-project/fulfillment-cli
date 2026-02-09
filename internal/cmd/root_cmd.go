@@ -22,6 +22,7 @@ import (
 	"github.com/innabox/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 
+	"github.com/innabox/fulfillment-cli/internal/cmd/annotate"
 	"github.com/innabox/fulfillment-cli/internal/cmd/create"
 	"github.com/innabox/fulfillment-cli/internal/cmd/delete"
 	"github.com/innabox/fulfillment-cli/internal/cmd/describe"
@@ -49,6 +50,7 @@ func Root() *cobra.Command {
 	logging.AddFlags(result.PersistentFlags())
 
 	// Add commands:
+	result.AddCommand(annotate.Cmd())
 	result.AddCommand(create.Cmd())
 	result.AddCommand(delete.Cmd())
 	result.AddCommand(describe.Cmd())
