@@ -99,7 +99,7 @@ func (s *computeInstancesServer) Create(ctx context.Context, request *ffv1.Compu
 	}
 	if instance.Status == nil {
 		instance.Status = &ffv1.ComputeInstanceStatus{
-			State: ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_PROGRESSING,
+			State: ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_STARTING,
 		}
 	}
 
@@ -122,7 +122,7 @@ func (s *computeInstancesServer) Get(ctx context.Context, request *ffv1.ComputeI
 			Template: "small-instance",
 		},
 		Status: &ffv1.ComputeInstanceStatus{
-			State:     ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_READY,
+			State:     ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_RUNNING,
 			IpAddress: "192.168.1.100",
 		},
 	}
@@ -142,7 +142,7 @@ func (s *computeInstancesServer) List(ctx context.Context, request *ffv1.Compute
 			Template: "small-instance",
 		},
 		Status: &ffv1.ComputeInstanceStatus{
-			State:     ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_READY,
+			State:     ffv1.ComputeInstanceState_COMPUTE_INSTANCE_STATE_RUNNING,
 			IpAddress: "192.168.1.100",
 		},
 	}
