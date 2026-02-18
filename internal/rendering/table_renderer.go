@@ -36,7 +36,7 @@ import (
 	"google.golang.org/protobuf/types/dynamicpb"
 	"gopkg.in/yaml.v3"
 
-	"github.com/innabox/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
 )
 
 //go:embed tables

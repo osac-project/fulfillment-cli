@@ -16,10 +16,10 @@ package describe
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd/describe/cluster"
-	"github.com/innabox/fulfillment-cli/internal/cmd/describe/computeinstance"
-	"github.com/innabox/fulfillment-cli/internal/cmd/describe/host"
-	"github.com/innabox/fulfillment-cli/internal/cmd/describe/hostpool"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/describe/cluster"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/describe/computeinstance"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/describe/host"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/describe/hostpool"
 )
 
 func Cmd() *cobra.Command {

@@ -20,14 +20,14 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/reflection"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 //go:embed templates

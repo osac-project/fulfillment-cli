@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd"
-	"github.com/innabox/fulfillment-cli/internal/exit"
+	"github.com/osac-project/fulfillment-cli/internal/cmd"
+	"github.com/osac-project/fulfillment-cli/internal/exit"
 )
 
 func main() {

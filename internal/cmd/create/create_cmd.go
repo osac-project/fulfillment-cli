@@ -21,7 +21,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -29,13 +29,13 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 	"gopkg.in/yaml.v3"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/cluster"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/computeinstance"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/hostpool"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/hub"
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/reflection"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/cluster"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/computeinstance"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/hostpool"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/hub"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 func Cmd() *cobra.Command {

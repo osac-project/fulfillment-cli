@@ -23,16 +23,16 @@ import (
 	"net"
 	"strings"
 
-	eventsv1 "github.com/innabox/fulfillment-common/api/events/v1"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	metadatav1 "github.com/innabox/fulfillment-common/api/metadata/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
+	eventsv1 "github.com/osac-project/fulfillment-common/api/events/v1"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	metadatav1 "github.com/osac-project/fulfillment-common/api/metadata/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/innabox/fulfillment-cli/internal/testing"
+	"github.com/osac-project/fulfillment-cli/internal/testing"
 )
 
 const (

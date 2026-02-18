@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
@@ -33,12 +33,12 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/exit"
-	"github.com/innabox/fulfillment-cli/internal/reflection"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/exit"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 )
 
 //go:embed templates

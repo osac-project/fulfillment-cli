@@ -19,20 +19,20 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd/annotate"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create"
-	"github.com/innabox/fulfillment-cli/internal/cmd/delete"
-	"github.com/innabox/fulfillment-cli/internal/cmd/describe"
-	"github.com/innabox/fulfillment-cli/internal/cmd/edit"
-	"github.com/innabox/fulfillment-cli/internal/cmd/get"
-	"github.com/innabox/fulfillment-cli/internal/cmd/label"
-	"github.com/innabox/fulfillment-cli/internal/cmd/login"
-	"github.com/innabox/fulfillment-cli/internal/cmd/logout"
-	"github.com/innabox/fulfillment-cli/internal/cmd/version"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/annotate"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/delete"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/describe"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/edit"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/get"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/label"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/login"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/logout"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/version"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 func Root() *cobra.Command {

@@ -18,16 +18,16 @@ import (
 	"context"
 	"log/slog"
 
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
 	. "github.com/onsi/ginkgo/v2/dsl/core"
 	. "github.com/onsi/gomega"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/innabox/fulfillment-cli/internal/reflection"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
-	"github.com/innabox/fulfillment-cli/internal/testing"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/testing"
 )
 
 var _ = Describe("Edit command", func() {

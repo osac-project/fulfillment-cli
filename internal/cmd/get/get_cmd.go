@@ -22,20 +22,20 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd/get/kubeconfig"
-	"github.com/innabox/fulfillment-cli/internal/cmd/get/password"
-	"github.com/innabox/fulfillment-cli/internal/cmd/get/token"
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/reflection"
-	"github.com/innabox/fulfillment-cli/internal/rendering"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/get/kubeconfig"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/get/password"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/get/token"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/reflection"
+	"github.com/osac-project/fulfillment-cli/internal/rendering"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 //go:embed templates

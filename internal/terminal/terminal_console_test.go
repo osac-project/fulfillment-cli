@@ -16,9 +16,9 @@ package terminal
 import (
 	"os"
 
-	"github.com/innabox/fulfillment-common/text"
 	. "github.com/onsi/ginkgo/v2/dsl/core"
 	. "github.com/onsi/gomega"
+	"github.com/osac-project/fulfillment-common/text"
 )
 
 var _ = Describe("Console", func() {

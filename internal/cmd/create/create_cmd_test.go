@@ -20,12 +20,12 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/cluster"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/computeinstance"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/hostpool"
-	"github.com/innabox/fulfillment-cli/internal/cmd/create/hub"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	privatev1 "github.com/innabox/fulfillment-common/api/private/v1"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/cluster"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/computeinstance"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/hostpool"
+	"github.com/osac-project/fulfillment-cli/internal/cmd/create/hub"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	privatev1 "github.com/osac-project/fulfillment-common/api/private/v1"
 )
 
 var _ = Describe("Create command", func() {

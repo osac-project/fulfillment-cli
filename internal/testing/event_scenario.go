@@ -17,9 +17,9 @@ import (
 	"fmt"
 	"os"
 
-	eventsv1 "github.com/innabox/fulfillment-common/api/events/v1"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
+	eventsv1 "github.com/osac-project/fulfillment-common/api/events/v1"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 	"gopkg.in/yaml.v3"
 )
 

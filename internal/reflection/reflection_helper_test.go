@@ -17,16 +17,16 @@ import (
 	"context"
 	"strings"
 
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
 	. "github.com/onsi/ginkgo/v2/dsl/core"
 	. "github.com/onsi/ginkgo/v2/dsl/table"
 	. "github.com/onsi/gomega"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/testing"
+	"github.com/osac-project/fulfillment-cli/internal/testing"
 )
 
 var _ = Describe("Reflection helper", func() {
