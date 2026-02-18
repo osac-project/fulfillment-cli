@@ -2,8 +2,8 @@
 
 The Fulfillment CLI is a command-line tool for managing infrastructure resources through the
 fulfillment API. It is designed to work with the
-[fulfillment-service](https://github.com/innabox/fulfillment-service) using the API defined in
-[fulfillment-api](https://github.com/innabox/fulfillment-api). The CLI provides a simple,
+[fulfillment-service](https://github.com/osac-project/fulfillment-service) using the API defined in
+[fulfillment-api](https://github.com/osac-project/fulfillment-api). The CLI provides a simple,
 intuitive interface for working with clusters, virtual machines, hosts, and other infrastructure
 components in your environment.
 
@@ -15,7 +15,7 @@ _OAuth_.
 ## Installation
 
 The easiest way to install this CLI is to download a pre-built binary from the
-[GitHub releases page](https://github.com/innabox/fulfillment-cli/releases). Choose the release
+[GitHub releases page](https://github.com/osac-project/fulfillment-cli/releases). Choose the release
 that matches your operating system and architecture.
 
 Once you've downloaded the binary, make it executable and move it to a directory in your system's

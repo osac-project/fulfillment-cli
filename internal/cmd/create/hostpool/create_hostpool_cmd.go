@@ -19,13 +19,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/innabox/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	sharedv1 "github.com/innabox/fulfillment-common/api/shared/v1"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	sharedv1 "github.com/osac-project/fulfillment-common/api/shared/v1"
 )
 
 func Cmd() *cobra.Command {

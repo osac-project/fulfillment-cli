@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-common/oauth"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-common/oauth"
 	"github.com/spf13/cobra"
 )
 

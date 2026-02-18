@@ -24,20 +24,20 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"github.com/innabox/fulfillment-common/auth"
-	"github.com/innabox/fulfillment-common/logging"
-	"github.com/innabox/fulfillment-common/network"
-	"github.com/innabox/fulfillment-common/oauth"
+	"github.com/osac-project/fulfillment-common/auth"
+	"github.com/osac-project/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/network"
+	"github.com/osac-project/fulfillment-common/oauth"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"google.golang.org/grpc"
 	healthv1 "google.golang.org/grpc/health/grpc_health_v1"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/exit"
-	internalnetwork "github.com/innabox/fulfillment-cli/internal/network"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
-	metadatav1 "github.com/innabox/fulfillment-common/api/metadata/v1"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/exit"
+	internalnetwork "github.com/osac-project/fulfillment-cli/internal/network"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
+	metadatav1 "github.com/osac-project/fulfillment-common/api/metadata/v1"
 )
 
 //go:embed templates

@@ -25,15 +25,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/innabox/fulfillment-common/auth"
-	"github.com/innabox/fulfillment-common/logging"
-	"github.com/innabox/fulfillment-common/network"
-	"github.com/innabox/fulfillment-common/oauth"
+	"github.com/osac-project/fulfillment-common/auth"
+	"github.com/osac-project/fulfillment-common/logging"
+	"github.com/osac-project/fulfillment-common/network"
+	"github.com/osac-project/fulfillment-common/oauth"
 	"github.com/spf13/pflag"
 	"google.golang.org/grpc"
 
-	"github.com/innabox/fulfillment-cli/internal/packages"
-	"github.com/innabox/fulfillment-cli/internal/version"
+	"github.com/osac-project/fulfillment-cli/internal/packages"
+	"github.com/osac-project/fulfillment-cli/internal/version"
 )
 
 // Config is the type used to store the configuration of the client.

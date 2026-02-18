@@ -19,13 +19,13 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/innabox/fulfillment-common/logging"
 	json "github.com/neilotoole/jsoncolor"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/exit"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/exit"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 func Cmd() *cobra.Command {

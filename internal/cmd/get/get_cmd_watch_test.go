@@ -14,11 +14,11 @@ language governing permissions and limitations under the License.
 package get
 
 import (
-	eventsv1 "github.com/innabox/fulfillment-common/api/events/v1"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
 	. "github.com/onsi/ginkgo/v2/dsl/core"
 	. "github.com/onsi/ginkgo/v2/dsl/table"
 	. "github.com/onsi/gomega"
+	eventsv1 "github.com/osac-project/fulfillment-common/api/events/v1"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -20,16 +20,16 @@ import (
 	"slices"
 	"sort"
 
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
-	"github.com/innabox/fulfillment-common/logging"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
+	"github.com/osac-project/fulfillment-common/logging"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/exit"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/exit"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
 )
 
 //go:embed templates

@@ -20,9 +20,9 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/innabox/fulfillment-cli/internal/config"
-	"github.com/innabox/fulfillment-cli/internal/terminal"
-	privatev1 "github.com/innabox/fulfillment-common/api/private/v1"
+	"github.com/osac-project/fulfillment-cli/internal/config"
+	"github.com/osac-project/fulfillment-cli/internal/terminal"
+	privatev1 "github.com/osac-project/fulfillment-common/api/private/v1"
 )
 
 func Cmd() *cobra.Command {

@@ -18,10 +18,10 @@ import (
 	"net"
 	"strings"
 
-	eventsv1 "github.com/innabox/fulfillment-common/api/events/v1"
-	ffv1 "github.com/innabox/fulfillment-common/api/fulfillment/v1"
 	. "github.com/onsi/ginkgo/v2/dsl/core"
 	. "github.com/onsi/gomega"
+	eventsv1 "github.com/osac-project/fulfillment-common/api/events/v1"
+	ffv1 "github.com/osac-project/fulfillment-common/api/fulfillment/v1"
 	"google.golang.org/genproto/googleapis/api/httpbody"
 	"google.golang.org/grpc"
 )

@@ -22,7 +22,7 @@ builds:
   - windows
   - darwin
   ldflags:
-  - -X github.com/innabox/fulfillment-cli/internal/version.id={{ .Version }}
+  - -X github.com/osac-project/fulfillment-cli/internal/version.id={{ .Version }}
 
 archives:
 - formats: [tar.gz]
