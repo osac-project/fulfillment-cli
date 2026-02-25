@@ -81,6 +81,66 @@ func Cmd() *cobra.Command {
 		[]string{},
 		"Template parameter from file in the format 'name=filename'.",
 	)
+	flags.Int32Var(
+		&runner.args.cores,
+		"cores",
+		0,
+		"Number of CPU cores.",
+	)
+	flags.Int32Var(
+		&runner.args.memoryGiB,
+		"memory-gib",
+		0,
+		"Memory size in GiB.",
+	)
+	flags.StringVar(
+		&runner.args.imageSourceRef,
+		"image",
+		"",
+		"Image reference (e.g. OCI image URL).",
+	)
+	flags.StringVar(
+		&runner.args.imageSourceType,
+		"image-source-type",
+		"registry",
+		"Image source type.",
+	)
+	flags.StringVar(
+		&runner.args.sshKey,
+		"ssh-key",
+		"",
+		"SSH public key.",
+	)
+	flags.Int32Var(
+		&runner.args.bootDiskSizeGiB,
+		"boot-disk-size",
+		0,
+		"Boot disk size in GiB.",
+	)
+	flags.StringVar(
+		&runner.args.bootDiskStorageClass,
+		"boot-disk-storage-class",
+		"",
+		"Storage class for boot disk.",
+	)
+	flags.StringSliceVar(
+		&runner.args.additionalDisks,
+		"additional-disk",
+		[]string{},
+		"Additional disk in format 'size[:storage_class]' (e.g. '100' or '100:fast'). Repeatable.",
+	)
+	flags.StringVar(
+		&runner.args.runStrategy,
+		"run-strategy",
+		"",
+		"Run strategy (e.g. 'Always' or 'Halted').",
+	)
+	flags.StringVar(
+		&runner.args.userDataSecretRef,
+		"user-data-secret-ref",
+		"",
+		"Name of the secret containing cloud-init user data.",
+	)
 	return result
 }
 
@@ -90,6 +150,16 @@ type runnerContext struct {
 		template                string
 		templateParameterValues []string
 		templateParameterFiles  []string
+		cores                   int32
+		memoryGiB               int32
+		imageSourceRef          string
+		imageSourceType         string
+		sshKey                  string
+		bootDiskSizeGiB         int32
+		bootDiskStorageClass    string
+		additionalDisks         []string
+		runStrategy             string
+		userDataSecretRef       string
 	}
 	logger                 *slog.Logger
 	console                *terminal.Console
@@ -170,15 +240,18 @@ func (c *runnerContext) run(cmd *cobra.Command, args []string) error {
 		return exit.Error(1)
 	}
 
+	// Build the spec:
+	spec, err := c.buildSpec(template.GetId(), templateParameterValues)
+	if err != nil {
+		return err
+	}
+
 	// Prepare the compute instance:
 	computeInstance := ffv1.ComputeInstance_builder{
 		Metadata: sharedv1.Metadata_builder{
 			Name: c.args.name,
 		}.Build(),
-		Spec: ffv1.ComputeInstanceSpec_builder{
-			Template:           template.GetId(),
-			TemplateParameters: templateParameterValues,
-		}.Build(),
+		Spec: spec,
 	}.Build()
 
 	// Create the compute instance:
@@ -561,6 +634,85 @@ func (c *runnerContext) convertTextToTemplateParameterValue(ctx context.Context,
 		return
 	}
 	return
+}
+
+// buildSpec constructs the ComputeInstanceSpec from template info and CLI flags.
+func (c *runnerContext) buildSpec(templateID string,
+	templateParams map[string]*anypb.Any) (*ffv1.ComputeInstanceSpec, error) {
+	spec := ffv1.ComputeInstanceSpec_builder{
+		Template:           templateID,
+		TemplateParameters: templateParams,
+	}
+	if c.args.imageSourceRef != "" {
+		spec.Image = ffv1.ComputeInstanceImage_builder{
+			SourceType: c.args.imageSourceType,
+			SourceRef:  c.args.imageSourceRef,
+		}.Build()
+	}
+	if c.args.cores > 0 {
+		spec.Cores = proto.Int32(c.args.cores)
+	}
+	if c.args.memoryGiB > 0 {
+		spec.MemoryGib = proto.Int32(c.args.memoryGiB)
+	}
+	if c.args.sshKey != "" {
+		spec.SshKey = proto.String(c.args.sshKey)
+	}
+	if c.args.bootDiskSizeGiB > 0 {
+		bootDisk := ffv1.ComputeInstanceDisk_builder{
+			SizeGib: c.args.bootDiskSizeGiB,
+		}
+		if c.args.bootDiskStorageClass != "" {
+			bootDisk.StorageClass = proto.String(c.args.bootDiskStorageClass)
+		}
+		spec.BootDisk = bootDisk.Build()
+	}
+	if len(c.args.additionalDisks) > 0 {
+		disks, err := parseAdditionalDisks(c.args.additionalDisks)
+		if err != nil {
+			return nil, err
+		}
+		spec.AdditionalDisks = disks
+	}
+	if c.args.runStrategy != "" {
+		spec.RunStrategy = proto.String(c.args.runStrategy)
+	}
+	if c.args.userDataSecretRef != "" {
+		spec.UserDataSecretRef = proto.String(c.args.userDataSecretRef)
+	}
+	return spec.Build(), nil
+}
+
+// parseAdditionalDisks parses disk specs in kubectl-style "key=value,key=value" format.
+// Example: "size=100,storageClass=fast"
+func parseAdditionalDisks(diskArgs []string) ([]*ffv1.ComputeInstanceDisk, error) {
+	disks := make([]*ffv1.ComputeInstanceDisk, 0, len(diskArgs))
+	for _, arg := range diskArgs {
+		fields := map[string]string{}
+		for _, pair := range strings.Split(arg, ",") {
+			kv := strings.SplitN(pair, "=", 2)
+			if len(kv) != 2 {
+				return nil, fmt.Errorf("invalid disk format '%s': expected key=value pairs separated by commas", arg)
+			}
+			fields[kv[0]] = kv[1]
+		}
+		sizeStr, ok := fields["size"]
+		if !ok {
+			return nil, fmt.Errorf("invalid disk format '%s': 'size' is required", arg)
+		}
+		sizeGiB, err := strconv.ParseInt(sizeStr, 10, 32)
+		if err != nil {
+			return nil, fmt.Errorf("invalid disk size '%s': %w", sizeStr, err)
+		}
+		disk := ffv1.ComputeInstanceDisk_builder{
+			SizeGib: int32(sizeGiB),
+		}
+		if sc, ok := fields["storageClass"]; ok {
+			disk.StorageClass = proto.String(sc)
+		}
+		disks = append(disks, disk.Build())
+	}
+	return disks, nil
 }
 
 // validTemplateParameter contains the information about a valid template parameter, for use in the error messages that

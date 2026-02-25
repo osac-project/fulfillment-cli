@@ -118,8 +118,8 @@ github.com/onsi/ginkgo/v2 v2.25.3 h1:Ty8+Yi/ayDAGtk4XxmmfUy4GabvM+MegeB4cDLRi6nw
 github.com/onsi/ginkgo/v2 v2.25.3/go.mod h1:43uiyQC4Ed2tkOzLsEYm7hnrb7UJTWHYNsuy3bG/snE=
 github.com/onsi/gomega v1.38.2 h1:eZCjf2xjZAqe+LeWvKb5weQ+NcPwX84kqJ0cZNxok2A=
 github.com/onsi/gomega v1.38.2/go.mod h1:W2MJcYxRGV63b418Ai34Ud0hEdTVXq9NW9+Sx6uXf3k=
-github.com/osac-project/fulfillment-common v0.0.39 h1:lYVh4hBiLxUDGPWsSdmXYZkRkX3erX4qCMU2x87nVfQ=
-github.com/osac-project/fulfillment-common v0.0.39/go.mod h1:Z1x2v8diIg1S4laK62UniHTgliPAIWdtBn/HsXYDrzU=
+github.com/osac-project/fulfillment-common v0.0.40 h1:+2Q1fXq09zNJ+m5ewU6nG2NYv4s74El8AuRD/PiL0xM=
+github.com/osac-project/fulfillment-common v0.0.40/go.mod h1:Z1x2v8diIg1S4laK62UniHTgliPAIWdtBn/HsXYDrzU=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
