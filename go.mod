@@ -13,7 +13,7 @@ require (
 	github.com/neilotoole/jsoncolor v0.7.1
 	github.com/onsi/ginkgo/v2 v2.25.3
 	github.com/onsi/gomega v1.38.2
-	github.com/osac-project/fulfillment-common v0.0.39
+	github.com/osac-project/fulfillment-common v0.0.40
 	github.com/spf13/cobra v1.10.1
 	google.golang.org/genproto/googleapis/api v0.0.0-20250908214217-97024824d090
 	google.golang.org/grpc v1.75.1
