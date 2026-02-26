@@ -63,3 +63,5 @@ require (
 	golang.org/x/text v0.29.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250908214217-97024824d090 // indirect
 )
+
+replace github.com/osac-project/fulfillment-common => ../fulfillment-common
