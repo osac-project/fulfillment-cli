@@ -81,9 +81,21 @@ func (c *runnerContext) run(cmd *cobra.Command, args []string) error {
 	// Create the client for the compute instances service:
 	client := ffv1.NewComputeInstancesClient(conn)
 
-	// Get the compute instance:
+	// Look up the compute instance by ID or name using a CEL filter:
+	filter := fmt.Sprintf("this.id in ['%s'] || this.metadata.name in ['%s']", id, id)
+	listResponse, err := client.List(ctx, ffv1.ComputeInstancesListRequest_builder{
+		Filter: &filter,
+	}.Build())
+	if err != nil {
+		return fmt.Errorf("failed to describe compute instance: %w", err)
+	}
+	if len(listResponse.GetItems()) == 0 {
+		return fmt.Errorf("compute instance not found: %s", id)
+	}
+
+	// Get the full object using the resolved UUID:
 	response, err := client.Get(ctx, ffv1.ComputeInstancesGetRequest_builder{
-		Id: id,
+		Id: listResponse.GetItems()[0].GetId(),
 	}.Build())
 	if err != nil {
 		return fmt.Errorf("failed to describe compute instance: %w", err)
